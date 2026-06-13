@@ -469,7 +469,7 @@ function renderPositionGrid(areas) {
       >${escapeHtml(area?.rank || "")}</span>
     `;
   });
-  return `<div class="position-grid">${cells}</div>`;
+  return `<div class="position-grid">${cells.join("")}</div>`;
 }
 
 function renderTagChip(tag) {

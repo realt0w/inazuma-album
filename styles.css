@@ -307,8 +307,8 @@ summary:focus-visible {
 
 .mini-meta {
   display: grid;
-  grid-template-columns: 69px 56px auto;
-  gap: 5px;
+  grid-template-columns: 60px minmax(0, 1fr) auto;
+  gap: 4px;
   align-items: center;
   margin-top: 0;
 }
@@ -320,14 +320,14 @@ summary:focus-visible {
 }
 
 .card-badges {
-  gap: 5px;
+  gap: 4px;
 }
 
 .card-stars {
   justify-content: start;
-  width: 56px;
+  width: 43px;
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .detail {
@@ -540,22 +540,22 @@ summary:focus-visible {
 }
 
 .mini-meta .element-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .mini-meta .position-badge {
-  min-width: 38px;
-  min-height: 24px;
-  padding: 3px 7px;
+  min-width: 34px;
+  min-height: 23px;
+  padding: 3px 6px;
   border-width: 1px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .mini-meta .stars img {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 .mini-meta .stars {
