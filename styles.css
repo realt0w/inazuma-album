@@ -307,7 +307,7 @@ summary:focus-visible {
 
 .mini-meta {
   display: grid;
-  grid-template-columns: 69px minmax(34px, 1fr) auto;
+  grid-template-columns: 69px 56px auto;
   gap: 5px;
   align-items: center;
   margin-top: 0;
@@ -325,7 +325,9 @@ summary:focus-visible {
 
 .card-stars {
   justify-content: start;
-  min-width: 34px;
+  width: 56px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .detail {
@@ -556,6 +558,14 @@ summary:focus-visible {
   height: 16px;
 }
 
+.mini-meta .stars {
+  min-height: 24px;
+  gap: 0;
+  justify-content: flex-start;
+  padding: 0;
+  white-space: nowrap;
+}
+
 .non-playable-badge {
   display: inline-flex;
   align-items: center;
@@ -571,10 +581,10 @@ summary:focus-visible {
 
 .character-info-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 112px;
+  grid-template-columns: minmax(0, 1fr) 130px;
   gap: 10px;
   align-items: start;
-  max-width: 362px;
+  max-width: 380px;
   margin-bottom: 14px;
 }
 
@@ -632,7 +642,7 @@ summary:focus-visible {
   display: grid;
   gap: 7px;
   justify-items: center;
-  width: 112px;
+  width: 130px;
 }
 
 .field-zone > span {
@@ -644,7 +654,7 @@ summary:focus-visible {
 
 .position-grid {
   display: grid;
-  grid-template-columns: repeat(3, 24px);
+  grid-template-columns: repeat(4, 23px);
   grid-template-rows: repeat(5, 21px);
   gap: 3px;
   padding: 7px;

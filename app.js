@@ -440,25 +440,35 @@ function renderModel(player) {
 }
 
 function renderPositionGrid(areas) {
-  const areaByCell = new Map();
+  const areaByCode = new Map();
   for (const area of areas) {
-    if (area.grid) {
-      areaByCell.set(`${area.grid.row}:${area.grid.col}`, area);
+    if (area.field_area_code) {
+      areaByCode.set(Number(area.field_area_code), area);
     }
   }
-  const cells = [];
-  for (let row = 1; row <= 5; row += 1) {
-    for (let col = 1; col <= 3; col += 1) {
-      const area = areaByCell.get(`${row}:${col}`);
-      cells.push(`
-        <span
-          class="zone-cell ${area ? `rank-${escapeAttr(String(area.rank || "").toLowerCase())}` : "rank-empty"}"
-          style="grid-row:${row};grid-column:${col}"
-          title="${escapeAttr(area ? `${area.name || ""} ${area.rank || ""}` : "")}"
-        >${escapeHtml(area?.rank || "")}</span>
-      `);
-    }
-  }
+  const layout = [
+    { code: 1, row: "1", col: "1" },
+    { code: 2, row: "1", col: "2 / span 2" },
+    { code: 3, row: "1", col: "4" },
+    { code: 4, row: "2 / span 2", col: "1" },
+    { code: 5, row: "2", col: "2 / span 2" },
+    { code: 6, row: "2 / span 2", col: "4" },
+    { code: 7, row: "3", col: "2 / span 2" },
+    { code: 8, row: "4", col: "1" },
+    { code: 9, row: "4", col: "2 / span 2" },
+    { code: 10, row: "4", col: "4" },
+    { code: 11, row: "5", col: "2 / span 2" },
+  ];
+  const cells = layout.map((cell) => {
+    const area = areaByCode.get(cell.code);
+    return `
+      <span
+        class="zone-cell ${area ? `rank-${escapeAttr(String(area.rank || "").toLowerCase())}` : "rank-empty"}"
+        style="grid-row:${escapeAttr(cell.row)};grid-column:${escapeAttr(cell.col)}"
+        title="${escapeAttr(area ? `${area.name || ""} ${area.rank || ""}` : "")}"
+      >${escapeHtml(area?.rank || "")}</span>
+    `;
+  });
   return `<div class="position-grid">${cells}</div>`;
 }
 
