@@ -7,18 +7,6 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="is-booting">
-    <script>
-      (() => {
-        try {
-          const saved = JSON.parse(localStorage.getItem("inazuma-album-state-v2") || "null");
-          if (saved && ["players", "simulator"].includes(saved.mode)) {
-            document.body.dataset.mode = saved.mode;
-          }
-        } catch {
-          // The app will fall back to its default state.
-        }
-      })();
-    </script>
     <main class="app-shell">
       <header class="topbar">
         <div>
@@ -28,8 +16,15 @@
         <div class="mode-tabs" role="tablist" aria-label="Sections de l'album">
           <button class="mode-tab is-active" type="button" data-mode="players">Joueurs</button>
           <button class="mode-tab" type="button" data-mode="simulator">Simulateur</button>
+          <button class="mode-tab" type="button" data-mode="collection">Collection</button>
         </div>
-        <div class="db-meta" id="dbMeta">Chargement...</div>
+        <div class="topbar-actions">
+          <div class="db-meta" id="dbMeta">Chargement...</div>
+          <button id="authOpenButton" class="auth-button" type="button">
+            <span class="auth-avatar" aria-hidden="true"></span>
+            <span id="authButtonLabel">Login / Register</span>
+          </button>
+        </div>
       </header>
 
       <section class="filters" aria-label="Filtres">
@@ -100,6 +95,14 @@
       </div>
     </div>
 
+    <div id="authModal" class="auth-modal" hidden role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+      <div class="auth-modal-window">
+        <button id="authModalClose" class="modal-close" type="button" aria-label="Fermer">×</button>
+        <div id="authModalBody"></div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

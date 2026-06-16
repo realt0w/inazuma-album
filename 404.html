@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inazuma Eleven Cross</title>
+  </head>
+  <body>
+    <script>
+      (() => {
+        const cleanPath = window.location.pathname.replace(/^\/+|\/+$/g, "");
+        const reserved = ["", "index.html", "public", "inazuma-album", "assets", "data", "api"];
+        const firstSegment = cleanPath.split("/")[0] || "";
+        if (!cleanPath || reserved.includes(firstSegment) || cleanPath.includes(".")) {
+          window.location.replace("/");
+          return;
+        }
+        window.location.replace(`/?publicProfile=${encodeURIComponent(firstSegment)}`);
+      })();
+    </script>
+  </body>
+</html>
